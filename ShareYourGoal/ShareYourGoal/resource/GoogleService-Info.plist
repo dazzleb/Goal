@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>931134102687-6dake9id34rdntb6i7b57ntt7l1ivf5f.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.931134102687-6dake9id34rdntb6i7b57ntt7l1ivf5f</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDPlhTwnUKRyJmj4NWUuryGbCZY-vVTkiM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>931134102687</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.gmail-dazzledazzleb.ShareYourGoal</string>
+	<key>PROJECT_ID</key>
+	<string>goal-fb400</string>
+	<key>STORAGE_BUCKET</key>
+	<string>goal-fb400.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:931134102687:ios:35a20731474bd89ef856aa</string>
+</dict>
+</plist>
