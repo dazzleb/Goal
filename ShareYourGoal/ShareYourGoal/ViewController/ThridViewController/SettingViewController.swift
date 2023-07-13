@@ -1,13 +1,20 @@
 //
-//  CommunityViewController.swift
+//  SettingViewController.swift
 //  ShareYourGoal
 //
 //  Created by 시혁 on 2023/07/13.
 //
 
+import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
+import RxRelay
+import ReactorKit
+import Then
+import SnapKit
 
-class CommunityViewController: UIViewController {
+class SettingViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
