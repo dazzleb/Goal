@@ -20,13 +20,16 @@
 		28B5BA8E2A5F048F00CA1D07 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = 28B5BA8D2A5F048F00CA1D07 /* ReactorKit */; };
 		28B5BA912A5F04C300CA1D07 /* RxFlow in Frameworks */ = {isa = PBXBuildFile; productRef = 28B5BA902A5F04C300CA1D07 /* RxFlow */; };
 		28B5BA952A5F085100CA1D07 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 28B5BA942A5F085100CA1D07 /* FirebaseAuth */; };
-		28B5BA982A5F08F100CA1D07 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28B5BA972A5F08F100CA1D07 /* GoogleService-Info.plist */; };
 		28B5BA9B2A5F102B00CA1D07 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = 28B5BA9A2A5F102B00CA1D07 /* Then */; };
 		28B5BA9E2A5F106D00CA1D07 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 28B5BA9D2A5F106D00CA1D07 /* SnapKit */; };
 		28B5BAA32A5F146F00CA1D07 /* GoalViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B5BAA22A5F146F00CA1D07 /* GoalViewReactor.swift */; };
 		28B5BAAB2A5F1C1900CA1D07 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 28B5BAAA2A5F1C1900CA1D07 /* GoogleSignIn */; };
 		28B5BAAD2A5F1C1900CA1D07 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 28B5BAAC2A5F1C1900CA1D07 /* GoogleSignInSwift */; };
 		28B5BAAF2A5F1D5D00CA1D07 /* GoogleLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B5BAAE2A5F1D5D00CA1D07 /* GoogleLogin.swift */; };
+		28B5BAB42A5FE51F00CA1D07 /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 28B5BAB32A5FE51F00CA1D07 /* Color.xcassets */; };
+		28B5BAB62A60099400CA1D07 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B5BAB52A60099400CA1D07 /* MainViewController.swift */; };
+		28B5BAB82A60391500CA1D07 /* AppleLogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B5BAB72A60391400CA1D07 /* AppleLogin.swift */; };
+		28B5BABB2A604E3E00CA1D07 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 28B5BABA2A604E3E00CA1D07 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,9 +43,12 @@
 		28B5BA802A5F019B00CA1D07 /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		28B5BA822A5F01B700CA1D07 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		28B5BA922A5F07FF00CA1D07 /* ShareYourGoal.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ShareYourGoal.entitlements; sourceTree = "<group>"; };
-		28B5BA972A5F08F100CA1D07 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		28B5BAA22A5F146F00CA1D07 /* GoalViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalViewReactor.swift; sourceTree = "<group>"; };
 		28B5BAAE2A5F1D5D00CA1D07 /* GoogleLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleLogin.swift; sourceTree = "<group>"; };
+		28B5BAB32A5FE51F00CA1D07 /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
+		28B5BAB52A60099400CA1D07 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		28B5BAB72A60391400CA1D07 /* AppleLogin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleLogin.swift; sourceTree = "<group>"; };
+		28B5BABA2A604E3E00CA1D07 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,7 +97,6 @@
 				28B5BAA42A5F166100CA1D07 /* Service */,
 				28B5BA962A5F08BE00CA1D07 /* resource */,
 				28B5BA842A5F03FC00CA1D07 /* ViewController */,
-				28B5BA752A5F00DD00CA1D07 /* Assets.xcassets */,
 				28B5BA772A5F00DD00CA1D07 /* LaunchScreen.storyboard */,
 				28B5BA7A2A5F00DD00CA1D07 /* Info.plist */,
 			);
@@ -111,9 +116,11 @@
 		28B5BA962A5F08BE00CA1D07 /* resource */ = {
 			isa = PBXGroup;
 			children = (
+				28B5BABA2A604E3E00CA1D07 /* GoogleService-Info.plist */,
 				28B5BA6C2A5F00DB00CA1D07 /* AppDelegate.swift */,
 				28B5BA6E2A5F00DB00CA1D07 /* SceneDelegate.swift */,
-				28B5BA972A5F08F100CA1D07 /* GoogleService-Info.plist */,
+				28B5BA752A5F00DD00CA1D07 /* Assets.xcassets */,
+				28B5BAB32A5FE51F00CA1D07 /* Color.xcassets */,
 			);
 			path = resource;
 			sourceTree = "<group>";
@@ -144,7 +151,8 @@
 			isa = PBXGroup;
 			children = (
 				28B5BA702A5F00DB00CA1D07 /* GoalViewController.swift */,
-				28B5BAAE2A5F1D5D00CA1D07 /* GoogleLogin.swift */,
+				28B5BAB52A60099400CA1D07 /* MainViewController.swift */,
+				28B5BAB02A5FDC5C00CA1D07 /* Oauth */,
 			);
 			path = FirstViewController;
 			sourceTree = "<group>";
@@ -163,6 +171,15 @@
 				28B5BA822A5F01B700CA1D07 /* SettingViewController.swift */,
 			);
 			path = ThridViewController;
+			sourceTree = "<group>";
+		};
+		28B5BAB02A5FDC5C00CA1D07 /* Oauth */ = {
+			isa = PBXGroup;
+			children = (
+				28B5BAAE2A5F1D5D00CA1D07 /* GoogleLogin.swift */,
+				28B5BAB72A60391400CA1D07 /* AppleLogin.swift */,
+			);
+			path = Oauth;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,8 +262,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				28B5BA792A5F00DD00CA1D07 /* LaunchScreen.storyboard in Resources */,
+				28B5BABB2A604E3E00CA1D07 /* GoogleService-Info.plist in Resources */,
+				28B5BAB42A5FE51F00CA1D07 /* Color.xcassets in Resources */,
 				28B5BA762A5F00DD00CA1D07 /* Assets.xcassets in Resources */,
-				28B5BA982A5F08F100CA1D07 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,12 +276,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				28B5BA832A5F01B700CA1D07 /* SettingViewController.swift in Sources */,
+				28B5BAB82A60391500CA1D07 /* AppleLogin.swift in Sources */,
 				28B5BA812A5F019B00CA1D07 /* CommunityViewController.swift in Sources */,
 				28B5BA712A5F00DB00CA1D07 /* GoalViewController.swift in Sources */,
 				28B5BA6D2A5F00DB00CA1D07 /* AppDelegate.swift in Sources */,
 				28B5BAA32A5F146F00CA1D07 /* GoalViewReactor.swift in Sources */,
 				28B5BAAF2A5F1D5D00CA1D07 /* GoogleLogin.swift in Sources */,
 				28B5BA6F2A5F00DB00CA1D07 /* SceneDelegate.swift in Sources */,
+				28B5BAB62A60099400CA1D07 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,7 +351,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -385,7 +405,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -401,6 +421,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ShareYourGoal/ShareYourGoal.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6YZVGHXP9V;
@@ -410,13 +431,15 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail-dazzledazzleb.ShareYourGoal";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dazzledazzleb.ShareYourGoal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -429,6 +452,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = ShareYourGoal/ShareYourGoal.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 6YZVGHXP9V;
@@ -438,13 +462,15 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.gmail-dazzledazzleb.ShareYourGoal";
+				PRODUCT_BUNDLE_IDENTIFIER = com.dazzledazzleb.ShareYourGoal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

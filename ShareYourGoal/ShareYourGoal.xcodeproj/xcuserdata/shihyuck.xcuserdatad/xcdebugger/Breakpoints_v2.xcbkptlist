@@ -3,4 +3,214 @@
    uuid = "8DF1AF7E-62BF-4EF2-9B54-508FBCC25FEB"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "43B5C378-0443-482E-BAA6-9C2E7A739CD9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareYourGoal/ViewController/FirstViewController/Oauth/AppleLogin.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
+            landmarkName = "authorizationController(controller:didCompleteWithAuthorization:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E6E83550-FB16-41CA-8C7C-BB0F7ACAE7CB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareYourGoal/ViewController/FirstViewController/Oauth/AppleLogin.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "authorizationController(controller:didCompleteWithAuthorization:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E6E83550-FB16-41CA-8C7C-BB0F7ACAE7CB - 7714f3e8c5145610"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ShareYourGoal.GoalViewController.authorizationController(controller: __C.ASAuthorizationController, didCompleteWithAuthorization: __C.ASAuthorization) -&gt; ()"
+                  moduleName = "ShareYourGoal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shihyuck/Desktop/Goal/ShareYourGoal/ShareYourGoal/ViewController/FirstViewController/Oauth/AppleLogin.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79"
+                  offsetFromSymbolStart = "563">
+               </Location>
+               <Location
+                  uuid = "E6E83550-FB16-41CA-8C7C-BB0F7ACAE7CB - 7714f3e8c5145610"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "ShareYourGoal.GoalViewController.authorizationController(controller: __C.ASAuthorizationController, didCompleteWithAuthorization: __C.ASAuthorization) -&gt; ()"
+                  moduleName = "ShareYourGoal"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/shihyuck/Desktop/Goal/ShareYourGoal/ShareYourGoal/ViewController/FirstViewController/Oauth/AppleLogin.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79"
+                  offsetFromSymbolStart = "624">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ADABB997-8CC3-4986-8141-69619BD53703"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareYourGoal/ViewController/FirstViewController/Oauth/AppleLogin.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "authorizationController(controller:didCompleteWithAuthorization:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FA365C01-BAD3-4CF8-8194-86CA13902B95"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareYourGoal/ViewController/FirstViewController/Oauth/AppleLogin.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "authorizationController(controller:didCompleteWithAuthorization:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E0DB883A-F8E1-4471-B3F6-86189DEFC709"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareYourGoal/ViewController/FirstViewController/Oauth/AppleLogin.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "authorizationController(controller:didCompleteWithAuthorization:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5B63C834-14D9-4779-B87C-05F445462E6F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareYourGoal/ViewController/FirstViewController/Oauth/AppleLogin.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "authorizationController(controller:didCompleteWithAuthorization:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A76D6399-27B9-4B38-B8D0-B5D0B02EE36A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareYourGoal/ViewController/FirstViewController/Oauth/AppleLogin.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "startSignInWithAppleFlow()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1E96B03E-EA47-4E2D-80EC-216827C2E7E3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareYourGoal/ViewController/FirstViewController/Oauth/AppleLogin.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "startSignInWithAppleFlow()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1498EE4C-D715-4A76-8241-58D8EA2E8D9B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareYourGoal/ViewController/FirstViewController/Oauth/AppleLogin.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "58"
+            endingLineNumber = "58"
+            landmarkName = "startSignInWithAppleFlow()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F664A844-4EDB-48A4-B94E-FD013954F393"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareYourGoal/ViewController/FirstViewController/Oauth/AppleLogin.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
+            landmarkName = "startSignInWithAppleFlow()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "67F566B5-3A72-41D8-B020-819002316B06"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ShareYourGoal/ViewController/FirstViewController/Oauth/AppleLogin.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "startSignInWithAppleFlow()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
