@@ -10,7 +10,7 @@ import FirebaseCore
 import FirebaseAuth
 import CryptoKit
 import AuthenticationServices
-extension GoalViewController {
+extension LoginViewController {
     private func randomNonceString(length: Int = 32) -> String {
       precondition(length > 0)
       var randomBytes = [UInt8](repeating: 0, count: length)
@@ -63,13 +63,13 @@ extension GoalViewController {
     
 }
 
-extension GoalViewController : ASAuthorizationControllerPresentationContextProviding {
+extension LoginViewController : ASAuthorizationControllerPresentationContextProviding {
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return self.view.window!
     }
 }
 
-extension GoalViewController: ASAuthorizationControllerDelegate {
+extension LoginViewController: ASAuthorizationControllerDelegate {
 
   func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
     if let appleIDCredential = authorization.credential as? ASAuthorizationAppleIDCredential {
@@ -112,9 +112,9 @@ extension GoalViewController: ASAuthorizationControllerDelegate {
 //          print("providerID: \(providerID)")
 //          print("isNewUser: \(isNewUser)")
 //          print("uid: \(uid)")
-          print(#fileID, #function, #line, "- 애플 로그인 성공")
-          let MainViewController = MainViewController()
-          self.navigationController?.viewControllers = [MainViewController]
+//          print(#fileID, #function, #line, "- 애플 로그인 성공")
+//          let MainViewController = ProfileRegisterViewController(userInfo: <#UserInfoData#>)
+//          self.navigationController?.viewControllers = [MainViewController]
       }
     }
   }
