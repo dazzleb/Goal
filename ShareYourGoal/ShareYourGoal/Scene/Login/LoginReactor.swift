@@ -25,12 +25,14 @@ final class LoginReactor: Reactor {
     // 사용자로 부터 들어오는 액션
     enum Action {
         case google
+        case Apple
         case profileSetting(nickName: String,profileURL: String)
     }
     // 사용자로 부터 들어오는 액션을 토대로
     // 상태를 바꾸는 로직처리
     enum Mutation {
         case googleLoginUserInfo(userInfo: UserInfoData)
+        case appleLoginUserInfo(userInfo: UserInfoData)
         case profile(updateUserInfo: UserInfoData)
     }
     
@@ -54,7 +56,11 @@ final class LoginReactor: Reactor {
                          Mutation.googleLoginUserInfo(userInfo: userInfoData)
                     })
             ])
-        case .profileSetting(let nickName,let profileURL):
+        case .Apple://유저 데이터 state 에 저장
+            // apple service 에서 반환 받아오는 userData 보내주기
+            return Observable.just(Mutation.appleLoginUserInfo(userInfo: <#T##UserInfoData#>))
+            
+        case .profileSetting(let nickName,let profileURL):  //프로필 수정 업데이트
          
             let updateUserInfo : UserInfoData = UserInfoData(id: currentState.userInfo.id, email: currentState.userInfo.email, nickName: nickName, profileURL: profileURL)
 
@@ -66,6 +72,8 @@ final class LoginReactor: Reactor {
         
         switch mutation {
         case .googleLoginUserInfo(userInfo: let user):
+            newState.userInfo = user
+        case .appleLoginUserInfo(userInfo: let user):
             newState.userInfo = user
         case .profile(updateUserInfo: let updateUserInfo):
             newState.userInfo = updateUserInfo
