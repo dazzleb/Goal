@@ -47,8 +47,10 @@ final class AppFlow: Flow {
         }
     }// navigate
     
+    /// login 화면
     private func navigationToLoginScreen() -> FlowContributors {
         let loginReactor = LoginReactor()
+        
         let vc = LoginViewController(with: loginReactor)
         self.rootViewController.pushViewController(vc, animated: true)
         // 1. presenter : vc, flow
@@ -56,14 +58,14 @@ final class AppFlow: Flow {
 //        return .one(flowContributor: .contribute(withNextPresentable: vc, withNextStepper: loginReactor))
         return .one(flowContributor: .contribute(withNext: vc))
     }
-    
+    /// auth 완료 후 프로필 화면 이동 ->  google  & apple
     private func navigationToProfileRegister(_ userInfo: UserInfoData) -> FlowContributors {
         let vc = ProfileRegisterViewController(userInfo: userInfo)
-        self.rootViewController.pushViewController(vc, animated: true)
-//        self.rootViewController.setViewControllers([vc], animated: true)
+//        self.rootViewController.pushViewController(vc, animated: true)
+        self.rootViewController.setViewControllers([vc], animated: true)
         return .one(flowContributor: .contribute(withNext: vc))
     }
-    
+    /// 프로필 설정 완료 후 tab화면 이동
     private func navigationToTabBar(_ userInfo: UserInfoData) -> FlowContributors {
         let tab = MainTabFlow()
         let tabBar = tab.rootViewController
