@@ -7,45 +7,34 @@
 
 import UIKit
 import FirebaseCore
+import RxFlow
+import RxSwift
+import RxCocoa
+import RxRelay
+
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     var window: UIWindow?
-    
+    let disposeBag = DisposeBag()
+    var coordinator = FlowCoordinator()
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         FirebaseApp.configure()
-        // 1. scene 캡처
+        
         guard let windowSecene = (scene as? UIWindowScene) else { return }
         
-        // 2. window scene을 가져오는 windowScene을  생성자를 사용해서 UIWindow를 생성
-        let window = UIWindow(windowScene: windowSecene)
+        let appFlow = AppFlow() // 흐름
+        let appStepper = AppSteper() // 흐름 트리거
         
-        // 3. view 계층을 프로그래밍 방식으로 만들기
-        let firstViewController = UINavigationController(rootViewController: GoalViewController())
-        let secondViewController = UINavigationController(rootViewController: CommunityViewController())
-        let thirdViewController = UINavigationController(rootViewController: SettingViewController())
-        let tabBarController = UITabBarController()
-            tabBarController.setViewControllers([firstViewController, secondViewController, thirdViewController], animated: true)
-        if let tabBarItems = tabBarController.tabBar.items {
-                tabBarItems[0].selectedImage = UIImage(systemName: "square.and.pencil.circle.fill")
-                tabBarItems[0].image = UIImage(systemName: "square.and.pencil.circle")
-                tabBarItems[0].title = "Goals"
-
-                tabBarItems[1].selectedImage = UIImage(systemName: "person.3.sequence.fill")
-                tabBarItems[1].image = UIImage(systemName: "person.3.sequence")
-                tabBarItems[1].title = "Community"
-
-                tabBarItems[2].selectedImage = UIImage(systemName: "gearshape.fill")
-                tabBarItems[2].image = UIImage(systemName: "gearshape")
-                tabBarItems[2].title = "Setting"
-            }
+        // 흐름 & 흐름 트리거 연결되었음
+        self.coordinator.coordinate(flow: appFlow, with: appStepper)
         
-        // 4. viewController로 window의 root view controller를 설정
-        window.rootViewController = tabBarController
-        
-        // 5. window를 설정하고 makeKeyAndVisible()
-        self.window = window
-        window.makeKeyAndVisible()
+        Flows.use(appFlow, when: .created, block: { rootVC in
+            let window = UIWindow(windowScene: windowSecene)
+            window.rootViewController = rootVC
+            self.window = window
+            window.makeKeyAndVisible()
+        })
     }
     
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -79,3 +68,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
 }
 
+//struct AppServices: HasLoginService {
+//    let loginService: LoginService
+//}
