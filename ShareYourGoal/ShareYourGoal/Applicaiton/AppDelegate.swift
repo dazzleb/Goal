@@ -6,12 +6,12 @@
 //
 
 import UIKit
-// 파이어베잇흐
 import FirebaseCore
-//import FirebaseFirestore
+import FirebaseFirestore
 import FirebaseAuth
 //구글로그인
 import GoogleSignIn
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -19,7 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-//        FirebaseApp.configure()
+        FirebaseApp.configure()
+        let db = Firestore.firestore()
         return true
     }
 //    func application(_ app: UIApplication,
