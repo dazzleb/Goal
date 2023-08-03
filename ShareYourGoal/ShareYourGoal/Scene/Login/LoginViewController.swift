@@ -14,14 +14,15 @@ import Then
 import SnapKit
 import GoogleSignIn
 import RxFlow
+import AuthenticationServices
 
 class LoginViewController: UIViewController, StoryboardView, Stepper {
-
+    
     var steps: PublishRelay<Step> = PublishRelay()
     
     typealias Reactor = LoginReactor
     
-    var currentNonce: String?
+    
     var disposeBag: DisposeBag = DisposeBag()
     
     init(with reactor: LoginReactor) {
@@ -35,25 +36,33 @@ class LoginViewController: UIViewController, StoryboardView, Stepper {
     }
     
     
-    
+    //MARK: BIND
     func bind(reactor: LoginReactor) {
-//        googleLogin(reactor)
+        //        googleLogin(reactor)
         googleLoginMark.rx.tap
             .debug()
             .map { Reactor.Action.google }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
+
+        AppleLoginMark.rx.tap
+            .debug()
+            .map { Reactor.Action.Apple}
+            .bind(to: reactor.action )
+            .disposed(by: disposeBag)
         
         reactor
             .state
             .debug("⭐️⭐️⭐️")
-            .filter{ $0.userInfo.email.count > 0 }
+            .filter{ $0.userInfo.id.count > 0 }
             .bind(onNext: {user in
                 let userInfo = user.userInfo
                 print("\(userInfo)")
-
+                
                 self.steps.accept(AppStep.profileSetting(userInfoData: userInfo))
             }).disposed(by: disposeBag)
+            
+           
     }
     
     private func googleLogin(_ reactor: LoginReactor){
@@ -68,16 +77,7 @@ class LoginViewController: UIViewController, StoryboardView, Stepper {
         // Do any additional setup after loading the view.
         
         configureUI()
-//        googleLoginMark.rx.tap
-//            .subscribe(onNext: { [weak self] in
-//                self?.startGoogleLogin()
-//            })
-//            .disposed(by: disposeBag)
-        AppleLoginMark.rx.tap
-            .subscribe(onNext: { [weak self] in
-                self?.startSignInWithAppleFlow()
-            })
-            .disposed(by: disposeBag)
+        
     }
     //MARK: - UI
     func configureUI(){
@@ -194,4 +194,5 @@ class LoginViewController: UIViewController, StoryboardView, Stepper {
         $0.layer.shadowOpacity = 0.5
     }
 }
+
 

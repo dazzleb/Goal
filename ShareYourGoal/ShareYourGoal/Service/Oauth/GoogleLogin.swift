@@ -18,7 +18,7 @@ final class GoogleLoginService : NSObject {
     static let shared = GoogleLoginService()
     var disposeBag : DisposeBag = DisposeBag()
     var currentNonce: String?
-    let userInfoBehavior : BehaviorRelay<UserInfoData> = BehaviorRelay(value: UserInfoData(id: "", email: "", nickName: "", profileURL: ""))
+    let userInfoBehavior : BehaviorRelay<UserInfoData> = BehaviorRelay(value: UserInfoData(id: "", nickName: "", profileURL: ""))
     override init() {
         super.init()
     }
@@ -52,16 +52,16 @@ final class GoogleLoginService : NSObject {
                 print("signInConfig:\(signInConfig)")
                 
                 
-                let fullName = user.profile?.name
-                let giveName = user.profile?.givenName
-                let emailAddress = user.profile?.email
-                let profileURL = user.profile?.imageURL(withDimension: 320)
-                let userID = user.userID!
-                print("fullName:\(fullName!)")
-                print("giveName:\(giveName!)")
-                print("emailAddress:\(emailAddress!)")
-                print("profileURL:\(profileURL!)")
-                print("userID:\(userID)")
+//                let fullName = user.profile?.name
+////                let giveName = user.profile?.givenName
+////                let emailAddress = user.profile?.email
+//                let profileURL = user.profile?.imageURL(withDimension: 320)
+//                let userID = user.userID!
+//                print("fullName:\(fullName!)")
+//                print("giveName:\(giveName!)")
+//                print("emailAddress:\(emailAddress!)")
+//                print("profileURL:\(profileURL!)")
+//                print("userID:\(userID)")
     //        fullName:sihyeok park
     //        giveName:sihyeok
     //        emailAddress:dazzledazzleb@gmail.com
@@ -72,12 +72,17 @@ final class GoogleLoginService : NSObject {
 
               // ...
                 Auth.auth().signIn(with: credential) { result, error in
+                    let userID = result?.user.uid ?? ""
+                    let nickName = result?.user.displayName ?? ""
+                    let urlString = result?.user.photoURL?.absoluteString ?? ""
     //               guard let url = URL(string: "https://lh3.googleusercontent.com/a/AAcHTtcuDyxbI5NuQMLjid9NrQt8cW5fyiXA3UZNf41B46DMoA=s320") else {return}
-                    let urlString = profileURL?.absoluteString
+//                    let urlString = profileURL?.absoluteString
+                  
+                    
                     let userInfo : UserInfoData = UserInfoData(id: userID,
-                                                               email: emailAddress ?? "",
-                                                               nickName: fullName ?? "" ,
-                                                               profileURL: urlString ?? "")
+                                                               nickName: nickName ?? "" ,
+                                                               profileURL: urlString ?? ""
+                                                              )
                     
                     userInfoBehavior.accept(userInfo)
                     print("로그인 실패:  \(error.debugDescription)")

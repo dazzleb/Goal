@@ -20,13 +20,17 @@ final class LoginReactor: Reactor {
 //        let nickName: String
 //        let profileURL: String
 //    }
-    
+    //    if let imageURL = URL(string: data.profileImage){
+    //        userProfile.kf.setImage(with: imageURL)
+    //    }
+
+    let appleLoginService = AppleLoginService.shared
     var initialState: State
     // 사용자로 부터 들어오는 액션
     enum Action {
         case google
         case Apple
-        case profileSetting(nickName: String,profileURL: String)
+        case profileSetting(nickName: String)
     }
     // 사용자로 부터 들어오는 액션을 토대로
     // 상태를 바꾸는 로직처리
@@ -40,7 +44,7 @@ final class LoginReactor: Reactor {
         var userInfo : UserInfoData
     }
 
-    init(initialState: State = State(userInfo: UserInfoData(id: "", email: "", nickName: "", profileURL: ""))) {
+    init(initialState: State = State(userInfo: UserInfoData(id: "", nickName: "", profileURL: ""))) {
         self.initialState = initialState
     }
     
@@ -58,11 +62,17 @@ final class LoginReactor: Reactor {
             ])
         case .Apple://유저 데이터 state 에 저장
             // apple service 에서 반환 받아오는 userData 보내주기
-            return Observable.just(Mutation.appleLoginUserInfo(userInfo: <#T##UserInfoData#>))
-            
-        case .profileSetting(let nickName,let profileURL):  //프로필 수정 업데이트
-         
-            let updateUserInfo : UserInfoData = UserInfoData(id: currentState.userInfo.id, email: currentState.userInfo.email, nickName: nickName, profileURL: profileURL)
+            return Observable.concat([
+                self.appleLoginService.startSignInWithAppleFlow()
+                    .map({ userInfoData in
+                        let userInfo =  UserInfoData(id: userInfoData.id, nickName:  userInfoData.nickName, profileURL: userInfoData.profileURL)
+                        return Mutation.appleLoginUserInfo(userInfo: userInfo)
+                    })
+            ])
+        case .profileSetting(let nickName):  //프로필 수정 업데이트
+         // 맞나?
+            let url = currentState.userInfo.profileURL
+            let updateUserInfo : UserInfoData = UserInfoData(id: currentState.userInfo.id, nickName: nickName, profileURL: url, username: nickName)
 
             return  Observable.just(()).map{ Mutation.profile(updateUserInfo: updateUserInfo) }
         }
