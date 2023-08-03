@@ -8,7 +8,7 @@
 import Foundation
 struct UserInfoData{
     let id : String
-    let email : String
     let nickName : String
     let profileURL : String
+    var username: String? = nil
 }

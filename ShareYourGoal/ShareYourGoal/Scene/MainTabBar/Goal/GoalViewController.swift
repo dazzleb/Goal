@@ -17,10 +17,7 @@ import GoogleSignIn
 import RxFlow
 
 class GoalViewController : UIViewController, Stepper {
-    
-    
     var steps: RxRelay.PublishRelay<RxFlow.Step> = PublishRelay()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .brown
