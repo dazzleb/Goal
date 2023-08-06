@@ -31,6 +31,7 @@ final class LoginReactor: Reactor {
         case google
         case Apple
         case profileSetting(nickName: String)
+        case uploadProfileImg(imgData: Data)
     }
     // 사용자로 부터 들어오는 액션을 토대로
     // 상태를 바꾸는 로직처리
@@ -38,6 +39,7 @@ final class LoginReactor: Reactor {
         case googleLoginUserInfo(userInfo: UserInfoData)
         case appleLoginUserInfo(userInfo: UserInfoData)
         case profile(updateUserInfo: UserInfoData)
+        case uploadProfileImg(imgUrl: String)
     }
     
     struct State {
@@ -75,6 +77,13 @@ final class LoginReactor: Reactor {
             let updateUserInfo : UserInfoData = UserInfoData(id: currentState.userInfo.id, nickName: nickName, profileURL: url, username: nickName)
 
             return  Observable.just(()).map{ Mutation.profile(updateUserInfo: updateUserInfo) }
+        
+        case .uploadProfileImg(imgData: let imgData):
+            let userUid = currentState.userInfo.id
+            // 파이어베이스 스토어 서비스 작업 ㄱ
+            return Observable.concat([
+                Observable.just(Mutation.uploadProfileImg(imgUrl: ""))
+            ])
         }
     }
     func reduce(state: State, mutation: Mutation) -> State {
@@ -87,6 +96,11 @@ final class LoginReactor: Reactor {
             newState.userInfo = user
         case .profile(updateUserInfo: let updateUserInfo):
             newState.userInfo = updateUserInfo
+        case .uploadProfileImg(imgUrl: let imgUrl):
+            let updatedUserInfo = UserInfoData(id: currentState.userInfo.id,
+                                               nickName: currentState.userInfo.nickName
+                                               ,profileURL: imgUrl)
+            newState.userInfo = updatedUserInfo
         }
         return newState
     }

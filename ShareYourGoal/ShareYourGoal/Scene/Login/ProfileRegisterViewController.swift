@@ -16,6 +16,9 @@ import SnapKit
 import RxFlow
 import FirebaseFirestore
 import PhotosUI
+import Kingfisher
+import RxGesture
+
 class ProfileRegisterViewController : UIViewController, StoryboardView, Stepper{
     typealias Reactor = LoginReactor
     var disposeBag: DisposeBag = DisposeBag()
@@ -26,6 +29,8 @@ class ProfileRegisterViewController : UIViewController, StoryboardView, Stepper{
     
     var ref: DocumentReference? = nil
     let db = Firestore.firestore()
+    
+    var profileImgSelectedRelay : PublishRelay<UIImage> = PublishRelay()
     
     init(userInfo: UserInfoData){
         super.init(nibName: nil, bundle: nil)
@@ -48,11 +53,29 @@ class ProfileRegisterViewController : UIViewController, StoryboardView, Stepper{
             .subscribe(onNext: { text in
                 self.nickName = text
             }).disposed(by: disposeBag)
+        
+        // 이미지 뷰의 탭 제스처를 RxSwift Observable로 변환
+                storedProfileImg.rx.tapGesture()
+                    .when(.recognized)
+                    .subscribe(onNext: { _ in
+                        print("tapped!")
+                        self.openLibrary()
+                    })
+                    .disposed(by: disposeBag)
+       
     }
     
     
     //MARK: - BIND
     func bind(reactor: LoginReactor) {
+        profileImgSelectedRelay
+            .compactMap {
+                $0.jpegData(compressionQuality: 0.5)
+            }
+            .debug("이미지 🎨")
+            .map { Reactor.Action.uploadProfileImg(imgData: $0)}
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
         // 네비게이션 바 저장 버튼
         rightItem.rx.tap
             .debug("⭐️ 저장")
@@ -85,16 +108,14 @@ class ProfileRegisterViewController : UIViewController, StoryboardView, Stepper{
                     ]) { err in
                         
                     }
-
-                self.steps.accept(AppStep.mainTabBarIsRequired(userInfoData: uesrInfo))
+                self.storedProfileImg
+                    .kf
+                    .setImage(with: URL(string: info.userInfo.profileURL)!)
+//                self.steps.accept(AppStep.mainTabBarIsRequired(userInfoData: uesrInfo))
             })
             .disposed(by: disposeBag)
-        
-        
     }
-    //    if let imageURL = URL(string: data.profileImage){
-    //        userProfile.kf.setImage(with: imageURL)
-    //    }
+    
     //MARK: - UI
     func configureUI(){
         self.navigationItem.title = "프로필 설정"
@@ -105,11 +126,15 @@ class ProfileRegisterViewController : UIViewController, StoryboardView, Stepper{
         profileStackView.addArrangedSubview(bottomBar)
         self.view.addSubview(profileStackView)
         
+        if let defaultImgURL = URL(string: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541"){
+            storedProfileImg.kf.setImage(with: defaultImgURL)
+        }
+        
         // 스택뷰
         profileStackView.snp.makeConstraints {
             $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(10)
             $0.centerX.equalToSuperview()
-//            $0.height.equalTo(450)
+            //            $0.height.equalTo(450)
         }
         // 이미지
         storedProfileImg.snp.makeConstraints {
@@ -138,21 +163,24 @@ class ProfileRegisterViewController : UIViewController, StoryboardView, Stepper{
     lazy var profileStackView : UIStackView = UIStackView().then {
         $0.axis = .vertical
         $0.alignment = .center
-//        $0.backgroundColor = .white
+        //        $0.backgroundColor = .white
         $0.spacing = 20
     }
+   
     /// 이미지 저장소
     lazy var storedProfileImg : UIImageView = UIImageView().then {
         $0.contentMode = .scaleAspectFit
         $0.layer.cornerRadius = 90
-        $0.backgroundColor = .red
         $0.clipsToBounds = true
     }
+    
     /// 닉네임 텍스트필드
     lazy var NameTextField : UITextField = UITextField().then {
         $0.placeholder = "닉네임을 입력해주세요."
         $0.font = .systemFont(ofSize: 28, weight: .heavy)
         $0.textColor = UIColor(named: "MainFontColor")
+        
+        
     }
     /// 밑줄
     lazy var bottomBar :UIView = UIView().then {
@@ -161,7 +189,39 @@ class ProfileRegisterViewController : UIViewController, StoryboardView, Stepper{
 }
 
 //MARK: Photo
-extension ProfileRegisterViewController  {
+//MARK: - 액션
+extension ProfileRegisterViewController {
+        private func openLibrary(){
+        print(#fileID, #function, #line, "- ")
+        
+        /// Load Photos
+         PHPhotoLibrary.requestAuthorization { (status) in
+             switch status {
+             case .authorized:
+                 print("Good to proceed")
+                 DispatchQueue.main.async {
+                     self.presentPicker(filter: .images)
+                 }
+//                 let fetchOptions = PHFetchOptions()
+//                 self.allPhotos = PHAsset.fetchAssets(with: .image, options: fetchOptions)
+             case .denied, .restricted:
+                 print("Not allowed")
+             case .notDetermined:
+                 print("Not determined yet")
+             case .limited:
+                 print("limited")
+             @unknown default:
+                 print("default")
+             }
+         }
+        
+        
+    }
+}
+
+extension ProfileRegisterViewController {
+    
+    /// - Tag: PresentPicker
     private func presentPicker(filter: PHPickerFilter?) {
         var configuration = PHPickerConfiguration(photoLibrary: .shared())
         
@@ -180,28 +240,43 @@ extension ProfileRegisterViewController  {
         picker.delegate = self
         present(picker, animated: true)
     }
+    
 }
+
 extension ProfileRegisterViewController: PHPickerViewControllerDelegate {
+    
     /// - Tag: ParsePickerResults
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-        dismiss(animated: true)
         
-//        let existingSelection = self.selection
         var newSelection = [String: PHPickerResult]()
+        
         for result in results {
             let identifier = result.assetIdentifier!
-//            newSelection[identifier] = existingSelection[identifier] ?? result
+            newSelection[identifier] = result
         }
         
-        // Track the selection in case the user deselects it later.
-//        selection = newSelection
-//        selectedAssetIdentifiers = results.map(\.assetIdentifier!)
-//        selectedAssetIdentifierIterator = selectedAssetIdentifiers.makeIterator()
-//
-//        if selection.isEmpty {
-//            displayEmptyImage()
-//        } else {
-//            displayNext()
-//        }
+        guard let selectedImgId = results.compactMap{ $0.assetIdentifier }.first else {
+            print(#fileID, #function, #line, "- 이미지 에셋이 없다")
+            return
+        }
+        
+        guard let currentItemProvider = newSelection[selectedImgId]?.itemProvider else {
+            return
+        }
+        
+        guard currentItemProvider.canLoadObject(ofClass: UIImage.self) == true else {
+            return
+        }
+        
+        currentItemProvider.loadObject(ofClass: UIImage.self, completionHandler: { [weak self] image, error in
+            if let profileImg = image as? UIImage {
+//                self?.profileImgSelected?(profileImg)
+                self?.profileImgSelectedRelay.accept(profileImg)
+                DispatchQueue.main.async {
+                    self?.dismiss(animated: true)
+                }
+            }
+        })
+
     }
 }
