@@ -22,7 +22,6 @@ class ProfileRegisterViewController : UIViewController, StoryboardView, Stepper{
     
     var steps: PublishRelay<Step> = PublishRelay()
     
-//    var profile: String = ""
     var nickName: String = ""
     
     var ref: DocumentReference? = nil
@@ -43,7 +42,7 @@ class ProfileRegisterViewController : UIViewController, StoryboardView, Stepper{
         configureUI()
         
         // 닉네임변경 시 변수에 텍스트 값 넣기
-        nickNameTextField.rx.text
+        NameTextField.rx.text
             .orEmpty
             .distinctUntilChanged()
             .subscribe(onNext: { text in
@@ -66,7 +65,7 @@ class ProfileRegisterViewController : UIViewController, StoryboardView, Stepper{
             .map{ $0.userInfo.nickName }
             .observe(on: MainScheduler.instance)
             .bind(onNext: { existingNickname in
-                self.nickNameTextField.text = existingNickname
+                self.NameTextField.text = existingNickname
             })
             .disposed(by: disposeBag)
         
@@ -102,58 +101,66 @@ class ProfileRegisterViewController : UIViewController, StoryboardView, Stepper{
         self.navigationItem.rightBarButtonItem = rightItem
         
         profileStackView.addArrangedSubview(storedProfileImg)
-        profileStackView.addArrangedSubview(nickNameTextField)
-        //        profileStackView.addArrangedSubview(bottomBar)
+        profileStackView.addArrangedSubview(NameTextField)
+        profileStackView.addArrangedSubview(bottomBar)
         self.view.addSubview(profileStackView)
         
+        // 스택뷰
         profileStackView.snp.makeConstraints {
             $0.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(10)
             $0.centerX.equalToSuperview()
 //            $0.height.equalTo(450)
         }
+        // 이미지
         storedProfileImg.snp.makeConstraints {
-            $0.size.equalTo(90)
+            $0.size.equalTo(180)
         }
-        nickNameTextField.snp.makeConstraints {
+        // 이름 텍스트 필드
+        NameTextField.snp.makeConstraints {
             $0.height.equalTo(28)
-            $0.top.equalTo(self.storedProfileImg.snp.bottom).offset(10)
+            $0.top.equalTo(self.storedProfileImg.snp.bottom).offset(40)
             $0.left.equalTo(self.profileStackView.snp.left)
+            $0.width.equalTo(300)
+        }
+        bottomBar.snp.makeConstraints {
+            $0.top.equalTo(self.NameTextField.snp.bottom).offset(10)
+            $0.left.equalTo(self.profileStackView.snp.left)
+            $0.height.equalTo(1)
             $0.width.equalTo(300)
         }
     }
     
     /// 네비게이션 아이템
     lazy var rightItem: UIBarButtonItem = UIBarButtonItem().then {
-        $0.title = "저장"
+        $0.title = "확인"
     }
     /// 프로필 스택
     lazy var profileStackView : UIStackView = UIStackView().then {
         $0.axis = .vertical
         $0.alignment = .center
-        $0.backgroundColor = .white
+//        $0.backgroundColor = .white
         $0.spacing = 20
     }
     /// 이미지 저장소
     lazy var storedProfileImg : UIImageView = UIImageView().then {
         $0.contentMode = .scaleAspectFit
-        $0.layer.cornerRadius = 45
+        $0.layer.cornerRadius = 90
         $0.backgroundColor = .red
         $0.clipsToBounds = true
-        
-        
     }
     /// 닉네임 텍스트필드
-    lazy var nickNameTextField : UITextField = UITextField().then {
+    lazy var NameTextField : UITextField = UITextField().then {
         $0.placeholder = "닉네임을 입력해주세요."
         $0.font = .systemFont(ofSize: 28, weight: .heavy)
         $0.textColor = UIColor(named: "MainFontColor")
     }
     /// 밑줄
     lazy var bottomBar :UIView = UIView().then {
-        $0.backgroundColor = .brown
+        $0.backgroundColor = .black
     }
 }
 
+//MARK: Photo
 extension ProfileRegisterViewController  {
     private func presentPicker(filter: PHPickerFilter?) {
         var configuration = PHPickerConfiguration(photoLibrary: .shared())
