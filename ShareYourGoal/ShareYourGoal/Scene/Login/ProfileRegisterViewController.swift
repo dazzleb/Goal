@@ -52,6 +52,11 @@ class ProfileRegisterViewController : UIViewController, StoryboardView, Stepper{
             .distinctUntilChanged()
             .subscribe(onNext: { text in
                 self.nickName = text
+                if self.nickName.count > 0 {
+                    self.rightItem.isEnabled = true
+                }else {
+                    self.rightItem.isEnabled = false
+                }
             }).disposed(by: disposeBag)
         
         // 이미지 뷰의 탭 제스처를 RxSwift Observable로 변환
