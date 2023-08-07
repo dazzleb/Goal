@@ -79,10 +79,18 @@ final class LoginReactor: Reactor {
             return  Observable.just(()).map{ Mutation.profile(updateUserInfo: updateUserInfo) }
         
         case .uploadProfileImg(imgData: let imgData):
+            // 인자 로 uid 필요
             let userUid = currentState.userInfo.id
+            
             // 파이어베이스 스토어 서비스 작업 ㄱ
             return Observable.concat([
-                Observable.just(Mutation.uploadProfileImg(imgUrl: ""))
+                FirebaseStorageService
+                    .shared
+                    .uploadProfileImg(userUid: userUid, data: imgData)
+                    .debug(" 업로드 프로필 이미지 주소")
+                    .map({ profileURL in
+                        Mutation.uploadProfileImg(imgUrl: profileURL)
+                    })
             ])
         }
     }
@@ -101,6 +109,7 @@ final class LoginReactor: Reactor {
                                                nickName: currentState.userInfo.nickName
                                                ,profileURL: imgUrl)
             newState.userInfo = updatedUserInfo
+            
         }
         return newState
     }
