@@ -76,9 +76,9 @@ class ProfileRegisterViewController : UIViewController, StoryboardView, Stepper{
             .map { Reactor.Action.uploadProfileImg(imgData: $0)}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
-        // 네비게이션 바 저장 버튼
+        // 네비게이션 바 확인 버튼
         rightItem.rx.tap
-            .debug("⭐️ 저장")
+            .debug("⭐️ 확인")
             .map { Reactor.Action.profileSetting(nickName: self.nickName)}
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
@@ -94,9 +94,6 @@ class ProfileRegisterViewController : UIViewController, StoryboardView, Stepper{
         
         reactor
             .state
-            .filter{ info in
-                info.userInfo.username != nil
-            }
             .bind(onNext: { info in
                 let uesrInfo = info.userInfo
                 self.db.collection("goal")
@@ -126,9 +123,10 @@ class ProfileRegisterViewController : UIViewController, StoryboardView, Stepper{
         profileStackView.addArrangedSubview(bottomBar)
         self.view.addSubview(profileStackView)
         
-        if let defaultImgURL = URL(string: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541"){
-            storedProfileImg.kf.setImage(with: defaultImgURL)
-        }
+        //기본 이미지
+//        if let defaultImgURL = URL(string: "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541"){
+//            storedProfileImg.kf.setImage(with: defaultImgURL)
+//        }
         
         // 스택뷰
         profileStackView.snp.makeConstraints {
@@ -189,8 +187,8 @@ class ProfileRegisterViewController : UIViewController, StoryboardView, Stepper{
 }
 
 //MARK: Photo
-//MARK: - 액션
 extension ProfileRegisterViewController {
+    /// 사진
         private func openLibrary(){
         print(#fileID, #function, #line, "- ")
         

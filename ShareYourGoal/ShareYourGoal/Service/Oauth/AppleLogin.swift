@@ -118,14 +118,16 @@ final class AppleLoginService : NSObject,
                 print(#fileID, #function, #line, "\(authResult?.user.displayName)")
                 // User is signed in to Firebase with Apple.
                 // ...
-                let displayName = authResult?.user.displayName ?? ""
+               
+                let displayName = authResult?.user.displayName ?? "달성"
                 //                            print("displayName: \(displayName)")
                 //                          guard let email = authResult?.user.email else  { return }
-                let urlString = authResult?.user.photoURL?.absoluteString ?? ""
+                let urlString = authResult?.user.photoURL?.absoluteString ?? "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541"
                 //                          guard let providerID = authResult?.additionalUserInfo?.providerID else  { return }
                 //                          guard let isNewUser = authResult?.additionalUserInfo?.isNewUser else  { return }
                 let uid = authResult?.user.uid ?? ""
-                let userInfo : UserInfoData = UserInfoData(id: uid, nickName: displayName, profileURL: urlString)
+                let userInfo : UserInfoData = UserInfoData(id: uid,
+                                                           nickName: displayName, profileURL: urlString)
                 print(#fileID, #function, #line, "\(userInfo)")
                 self.userInfoBehavior.accept(userInfo)
                 

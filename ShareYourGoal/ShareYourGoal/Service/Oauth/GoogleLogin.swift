@@ -73,15 +73,15 @@ final class GoogleLoginService : NSObject {
               // ...
                 Auth.auth().signIn(with: credential) { result, error in
                     let userID = result?.user.uid ?? ""
-                    let nickName = result?.user.displayName ?? ""
-                    let urlString = result?.user.photoURL?.absoluteString ?? ""
+                    let nickName = result?.user.displayName ?? "달성"
+                    let urlString = result?.user.photoURL?.absoluteString ?? "https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png?20150327203541"
     //               guard let url = URL(string: "https://lh3.googleusercontent.com/a/AAcHTtcuDyxbI5NuQMLjid9NrQt8cW5fyiXA3UZNf41B46DMoA=s320") else {return}
 //                    let urlString = profileURL?.absoluteString
                   
                     
                     let userInfo : UserInfoData = UserInfoData(id: userID,
-                                                               nickName: nickName ?? "" ,
-                                                               profileURL: urlString ?? ""
+                                                               nickName: nickName ,
+                                                               profileURL: urlString
                                                               )
                     
                     userInfoBehavior.accept(userInfo)
